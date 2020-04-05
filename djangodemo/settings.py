@@ -127,6 +127,6 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
-#django_heroku.settings(locals())
+django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'

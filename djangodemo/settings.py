@@ -22,12 +22,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '56zp(f31e2q+q&*-sf3pe+2ev1&p*$6h7c&@1vnoo*4ctmi&v5'
-#SECRET_KEY = os.environ.get('SECRET_KEY')
+# SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = ['pacific-earth-62682.herokuapp.com','0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['pacific-earth-62682.herokuapp.com',
+                 '0.0.0.0', 'localhost', '127.0.0.1']
 
 
 # Application definition
@@ -39,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'polls',
 ]
 
 MIDDLEWARE = [
@@ -78,8 +80,8 @@ WSGI_APPLICATION = 'djangodemo.wsgi.application'
 
 DATABASES = {
     'default': {
-        #'ENGINE': 'django.db.backends.sqlite3',
-        #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'test',
         'USER': 'postgres',

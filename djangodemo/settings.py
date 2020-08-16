@@ -21,15 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '56zp(f31e2q+q&*-sf3pe+2ev1&p*$6h7c&@1vnoo*4ctmi&v5'
-# SECRET_KEY = os.environ.get('SECRET_KEY')
+#SECRET_KEY = '56zp(f31e2q+q&*-sf3pe+2ev1&p*$6h7c&@1vnoo*4ctmi&v5'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['voting-app.azurewebsites.net','pacific-earth-62682.herokuapp.com',
-                 '0.0.0.0', 'localhost', '127.0.0.1']
-
+#ALLOWED_HOSTS = ['voting-app.azurewebsites.net','pacific-earth-62682.herokuapp.com',
+#                 '0.0.0.0', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -78,16 +78,30 @@ WSGI_APPLICATION = 'djangodemo.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        # 'ENGINE': 'django.db.backends.sqlite3',
+#        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#       'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'test',
+#        'USER': 'postgres',
+#        'HOST': 'localhost',
+#        'PASSWORD': 'admin',
+#        'PORT': '5432',
+#    }
+#}
+
 DATABASES = {
     'default': {
-        # 'ENGINE': 'django.db.backends.sqlite3',
-        # 'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'test',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PASSWORD': 'admin',
-        'PORT': '5432',
+        'NAME': os.environ.get('DATABASE_NAME', ''),
+        'USER': os.environ.get('DATABASE_USER', ''),
+        'PASSWORD': os.environ.get('DATABASE_PASSWORD', ''),
+        'HOST': os.environ.get('DATABASE_HOST', ''),
+        'PORT': os.environ.get('DATABASE_PORT', ''),
+        'OPTIONS': {
+            'sslmode': 'require',
+        }
     }
 }
 
@@ -132,6 +146,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
-django_heroku.settings(locals())
+#django_heroku.settings(locals())
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

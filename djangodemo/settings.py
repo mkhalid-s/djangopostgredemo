@@ -27,7 +27,7 @@ SECRET_KEY = '56zp(f31e2q+q&*-sf3pe+2ev1&p*$6h7c&@1vnoo*4ctmi&v5'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pacific-earth-62682.herokuapp.com',
+ALLOWED_HOSTS = ['voting-app.azurewebsites.net','pacific-earth-62682.herokuapp.com',
                  '0.0.0.0', 'localhost', '127.0.0.1']
 
 

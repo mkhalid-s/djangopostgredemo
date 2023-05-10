@@ -27,5 +27,5 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
-        export SECRET_KEY= ${{ secrets.SuperSecret }}
+        export SECRET_KEY= ${{ secrets.SUPERSECRET }}
         python manage.py test
